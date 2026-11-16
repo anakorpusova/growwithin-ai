@@ -1,7 +1,9 @@
 package com.growwithin.backend;
 
 import tools.jackson.databind.JsonNode;
+import java.time.Duration;
 import java.util.List;
+import org.springframework.http.client.JdkClientHttpRequestFactory;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,8 +26,16 @@ public class AiCareerAdviceService {
             @Value("${ai.gemini.api-key:}") String apiKey,
             @Value("${ai.gemini.model:gemini-3.5-flash-lite}") String model) {
 
+        var httpClient = java.net.http.HttpClient.newBuilder()
+                .connectTimeout(Duration.ofSeconds(5))
+                .build();
+
+        var requestFactory = new JdkClientHttpRequestFactory(httpClient);
+        requestFactory.setReadTimeout(Duration.ofSeconds(10));
+
         this.restClient = RestClient.builder()
                 .baseUrl(GEMINI_BASE_URL)
+                .requestFactory(requestFactory)
                 .build();
         this.apiKey = apiKey;
         this.model = model;
