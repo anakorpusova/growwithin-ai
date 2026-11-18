@@ -1,0 +1,280 @@
+.app {
+  max-width: 1120px;
+  margin: auto;
+  padding: 0 40px 64px;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 116px;
+  border-bottom: 1px solid #292b30;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  color: #dbe8ff;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 29px;
+  font-weight: 600;
+  letter-spacing: -1.4px;
+  line-height: 1.2;
+}
+
+.brand-ai {
+  margin-left: 9px;
+  color: #88b5ff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  vertical-align: top;
+}
+
+.brand-caption {
+  display: block;
+  margin-top: 7px;
+  color: #9399a5;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.release-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  color: #b4bbc7;
+  border: 1px solid #33363d;
+  border-radius: 20px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: #98c8ae;
+  border-radius: 50%;
+}
+
+.intro {
+  max-width: 720px;
+  padding: 52px 0 34px;
+}
+
+.eyebrow {
+  color: #8fb5ed;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.intro h2 {
+  margin: 14px 0;
+  font-size: clamp(27px, 4vw, 39px);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -1.4px;
+}
+
+.intro p {
+  max-width: 580px;
+  margin: 0;
+  color: #a3a9b5;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+section {
+  margin-bottom: 24px;
+  padding: 30px;
+  background: #191a1e;
+  border: 1px solid #303239;
+  border-radius: 12px;
+}
+
+section h2 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+}
+
+section > p {
+  margin: 0 0 26px;
+  color: #9da4b0;
+  font-size: 13px;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  color: #bec4cf;
+  font-size: 12px;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 45px;
+  padding: 10px 13px;
+  color: #eef0f4;
+  background: #121316;
+  border: 1px solid #383b43;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+input:hover,
+select:hover {
+  border-color: #606979;
+}
+
+button {
+  min-height: 43px;
+  padding: 10px 16px;
+  color: #c7ceda;
+  background: #24262c;
+  border: 1px solid #3b3e47;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 150ms, border-color 150ms;
+}
+
+button:hover:not(:disabled) {
+  background: #30343d;
+  border-color: #657083;
+}
+
+.skill-row > button {
+  color: #a6aebb;
+  background: transparent;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid #303239;
+}
+
+button[type="submit"] {
+  padding-inline: 24px;
+  color: #111b2b;
+  background: #9bbfff;
+  border-color: #9bbfff;
+  font-weight: 700;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: #bad3ff;
+  border-color: #bad3ff;
+}
+
+article {
+  margin-top: 18px;
+  padding: 24px;
+  background: #141518;
+  border: 1px solid #30343c;
+  border-radius: 8px;
+}
+
+article h3 {
+  margin: 0 0 18px;
+  color: #e7ecf5;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+article p {
+  margin: 10px 0;
+  color: #b3bac7;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+article strong {
+  color: #dce2ed;
+  font-weight: 500;
+}
+
+article:last-child {
+  border-color: #425674;
+  background: #191f2a;
+}
+
+[role="alert"] {
+  margin-top: 20px;
+  padding: 14px;
+  color: #ffc3c3;
+  background: #342125;
+  border: 1px solid #75414b;
+  border-radius: 6px;
+}
+
+[role="status"] {
+  margin-top: 20px;
+  color: #a9caff;
+}
+
+@media (max-width: 650px) {
+  .app {
+    padding: 0 18px 36px;
+  }
+
+  .brand-header {
+    flex-wrap: wrap;
+    padding: 24px 0;
+  }
+
+  .brand h1 {
+    font-size: 25px;
+  }
+
+  .intro {
+    padding-top: 36px;
+  }
+
+  section {
+    padding: 22px;
+  }
+
+  .skill-row {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-row > button {
+    justify-self: start;
+  }
+
+  .actions button {
+    flex: 1;
+  }
+}
