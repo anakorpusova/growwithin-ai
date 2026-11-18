@@ -154,6 +154,6 @@ Use fictional employee data for the Alpha demonstration. AI-generated recommenda
 
 ## Alpha Status
 
-The Alpha includes a React interface connected to the Spring Boot skill-matching and Gemini advice endpoint. Local frontend testing confirmed that skill matches remain visible when AI advice is unavailable. Live Gemini advice through the frontend still requires verification.
+The Alpha includes a React interface connected to the Spring Boot skill-matching and Gemini advice endpoint. Local frontend testing confirmed that skill matches remain visible when AI advice is unavailable. Live Gemini advice was successfully verified through the React frontend using sample employee skills.
 
 Current limitations include sample opportunities, manually selected skill verification status, no saved employee profiles, and no structured 30/60/90-day development plan. Production hosting and API routing remain future work.

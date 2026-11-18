@@ -1,22 +1,27 @@
 package com.growwithin.backend;
 
 import tools.jackson.databind.JsonNode;
+import java.net.http.HttpClient;
 import java.time.Duration;
 import java.util.List;
-import org.springframework.http.client.JdkClientHttpRequestFactory;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestClientResponseException;
 
 @Service
 public class AiCareerAdviceService {
 
     private static final String GEMINI_BASE_URL =
             "https://generativelanguage.googleapis.com";
+
+    private static final System.Logger LOGGER =
+            System.getLogger(AiCareerAdviceService.class.getName());
 
     private final RestClient restClient;
     private final String apiKey;
@@ -26,7 +31,7 @@ public class AiCareerAdviceService {
             @Value("${ai.gemini.api-key:}") String apiKey,
             @Value("${ai.gemini.model:gemini-3.5-flash-lite}") String model) {
 
-        var httpClient = java.net.http.HttpClient.newBuilder()
+        var httpClient = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(5))
                 .build();
 
@@ -37,6 +42,7 @@ public class AiCareerAdviceService {
                 .baseUrl(GEMINI_BASE_URL)
                 .requestFactory(requestFactory)
                 .build();
+
         this.apiKey = apiKey;
         this.model = model;
     }
@@ -96,6 +102,23 @@ public class AiCareerAdviceService {
             return new AiAdvice(recommendation.trim(), model, true);
 
         } catch (RestClientException exception) {
+            if (exception instanceof RestClientResponseException responseError) {
+                LOGGER.log(
+                        System.Logger.Level.WARNING,
+                        "Gemini request failed with HTTP status: "
+                                + responseError.getStatusCode().value()
+                );
+            } else {
+                LOGGER.log(
+                        System.Logger.Level.WARNING,
+                        "Gemini request failed. Error type: "
+                                + exception.getClass().getSimpleName()
+                                + "; cause: "
+                                + exception.getMostSpecificCause()
+                                        .getClass().getSimpleName()
+                );
+            }
+
             return new AiAdvice(
                     "The AI recommendation service is temporarily unavailable.",
                     model,
